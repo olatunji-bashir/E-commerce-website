@@ -79,7 +79,7 @@
         document.getElementById('shipping-info').innerHTML = ''
     }
 
-    if(shipping != 'AnonymousUser'){
+    if(user != 'AnonymousUser'){
         document.getElementById('user-info').innerHTML = ''
     }
 
@@ -143,8 +143,12 @@
         })
         .then((response) => response.json())
         .then((data) => {
-            console.log('success:', data);
+            console.log('Success:', data);
             alert('Transaction completed');
+
+            cart = {}
+            document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
+
             window.location.href = "{% url 'store' %}"
         })
     }
